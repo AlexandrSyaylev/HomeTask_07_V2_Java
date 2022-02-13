@@ -8,7 +8,7 @@ class RadioTest {
 
 
     @Test
-    public void shouldSetAndGetCurrentVolume () { //Max vol 10
+    public void shouldSetAndGetCurrentVolume() { //Max vol 10
         Radio radio = new Radio();
         radio.setCurrentVolume(5);
         int actual = radio.getCurrentVolume();
@@ -17,7 +17,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldIncreaseVolumeUpperBoard () { //Max vol 10
+    public void shouldIncreaseVolumeUpperBoard() { //Max vol 10
         Radio radio = new Radio();
         radio.setCurrentVolume(10);
         radio.increaseVolume();
@@ -27,7 +27,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldIncreaseVolumeMiddleRange () {
+    public void shouldIncreaseVolumeMiddleRange() {
         Radio radio = new Radio();
         radio.setCurrentVolume(5);
         radio.increaseVolume();
@@ -37,7 +37,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldIncreaseVolumeOneStepToUpperBoard () {
+    public void shouldIncreaseVolumeOneStepToUpperBoard() {
         Radio radio = new Radio();
         radio.setCurrentVolume(9);
         radio.increaseVolume();
@@ -47,7 +47,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldDecreaseVolumeOneSteptoLowerBoard () { //Max vol 10
+    public void shouldDecreaseVolumeOneSteptoLowerBoard() { //Max vol 10
         Radio radio = new Radio();
         radio.setCurrentVolume(1);
         radio.decreaseVolume();
@@ -57,7 +57,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldDecreaseVolumeMiddleRange () {
+    public void shouldDecreaseVolumeMiddleRange() {
         Radio radio = new Radio();
         radio.setCurrentVolume(5);
         radio.decreaseVolume();
@@ -67,7 +67,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldDecreaseVolumeLowerBoard () {
+    public void shouldDecreaseVolumeLowerBoard() {
         Radio radio = new Radio();
         radio.setCurrentVolume(0);
         radio.decreaseVolume();
@@ -77,7 +77,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSetVolumeWhenOverBoard(){
+    public void shouldSetVolumeWhenOverBoard() {
         Radio radio = new Radio();
         radio.setCurrentVolume(5); //set midrange vol
         radio.setCurrentVolume(11);
@@ -85,6 +85,7 @@ class RadioTest {
         int expected = 5;
         assertEquals(expected, actual);
     }
+
     @Test
     public void ShouldSetAndGetStation() {
         Radio radio = new Radio();
