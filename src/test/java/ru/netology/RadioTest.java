@@ -17,6 +17,15 @@ class RadioTest {
     }
 
     @Test
+    public void shouldNotSetCurrentVolumeWhetValueIsOverRange() { //Max vol 10
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+        int actual = radio.getCurrentVolume();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldIncreaseVolumeUpperBoard() { //Max vol 10
         Radio radio = new Radio();
         radio.setCurrentVolume(10);
@@ -160,6 +169,16 @@ class RadioTest {
         radio.prevStation();
         int actual = radio.getCurrentStation();
         int expected = 9;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldNotSetWhenValueIsOverRange() { //Max station number 9
+        Radio radio = new Radio();
+        radio.setCurrentStation(0);
+        radio.setCurrentStation(-1);
+        int actual = radio.getCurrentStation();
+        int expected = 0;
         assertEquals(expected, actual);
     }
 
