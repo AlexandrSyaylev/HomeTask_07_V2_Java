@@ -28,10 +28,10 @@ class RadioTest {
     @Test
     public void shouldIncreaseVolumeUpperBoard() { //Max vol 10
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
         int actual = radio.getCurrentVolume();
-        int expected = 10;
+        int expected = 100;
         assertEquals(expected, actual);
     }
 
@@ -48,15 +48,15 @@ class RadioTest {
     @Test
     public void shouldIncreaseVolumeOneStepToUpperBoard() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(99);
         radio.increaseVolume();
         int actual = radio.getCurrentVolume();
-        int expected = 10;
+        int expected = 100;
         assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldDecreaseVolumeOneSteptoLowerBoard() { //Max vol 10
+    public void shouldDecreaseVolumeOneStepToLowerBoard() { //Max vol 10
         Radio radio = new Radio();
         radio.setCurrentVolume(1);
         radio.decreaseVolume();
@@ -88,10 +88,10 @@ class RadioTest {
     @Test
     public void shouldSetVolumeWhenOverBoard() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(5); //set midrange vol
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(50); //set midrange vol
+        radio.setCurrentVolume(101);
         int actual = radio.getCurrentVolume();
-        int expected = 5;
+        int expected = 50;
         assertEquals(expected, actual);
     }
 
@@ -105,7 +105,7 @@ class RadioTest {
     }
 
     @Test
-    public void ShouldSetStationWhenUpperBoard() { //Max station number 9
+    public void ShouldSetStationWhenUpperDefaultBoard() { //Max station number 9
         Radio radio = new Radio();
         radio.setCurrentStation(9);
         int actual = radio.getCurrentStation();
@@ -123,7 +123,7 @@ class RadioTest {
     }
 
     @Test
-    public void ShouldSetStationWhenOverBoard() { //Max station number 9
+    public void ShouldSetStationWhenOverDefaultBoard() { //Max station number 9
         Radio radio = new Radio();
         radio.setCurrentStation(5);
         radio.setCurrentStation(10);
@@ -143,7 +143,7 @@ class RadioTest {
     }
 
     @Test
-    public void ShouldLoopNumberStationWhenIncreaseUpperBoard() {
+    public void ShouldLoopNumberStationWhenIncreaseUpperDefaultBoard() {
         Radio radio = new Radio();
         radio.setCurrentStation(9);
         radio.nextStation();
@@ -163,7 +163,7 @@ class RadioTest {
     }
 
     @Test
-    public void ShouldLoopNumberStationWhenDecreaseLowerBoard() { //Max station number 9
+    public void ShouldLoopNumberStationWhenDecreaseLowerDefaultBoard() { //Max station number 9
         Radio radio = new Radio();
         radio.setCurrentStation(0);
         radio.prevStation();
@@ -179,6 +179,55 @@ class RadioTest {
         radio.setCurrentStation(-1);
         int actual = radio.getCurrentStation();
         int expected = 0;
+        assertEquals(expected, actual);
+    }
+    //______________________________Here_Test____Only_for_Set_MaxCount_Of_Stations_______________
+
+    @Test
+    public void ShouldSetUserQuantityStations() {
+        Radio radio = new Radio(15); //for 15 stations last number is 14
+        radio.setCurrentStation(11);
+        int actual = radio.getCurrentStation();
+        int expected = 11;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldSetStationWhenUpperUserBoard() { //Max station number 9
+        Radio radio = new Radio(15); //for 15 stations last number is 14
+        radio.setCurrentStation(14);
+        int actual = radio.getCurrentStation();
+        int expected = 14;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldSetStationWhenOverUserBoard() { //Max station number 9
+        Radio radio = new Radio(15); //for 15 stations last number is 14
+        radio.setCurrentStation(5);
+        radio.setCurrentStation(15);
+        int actual = radio.getCurrentStation();
+        int expected = 5;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldLoopNumberStationWhenIncreaseUpperUserBoard() {
+        Radio radio = new Radio(15); //for 15 stations last number is 14
+        radio.setCurrentStation(14);
+        radio.nextStation();
+        int actual = radio.getCurrentStation();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldLoopNumberStationWhenDecreaseLowerUserBoard() { //Max station number 9
+        Radio radio = new Radio(15); //for 15 stations last number is 14
+        radio.setCurrentStation(0);
+        radio.prevStation();
+        int actual = radio.getCurrentStation();
+        int expected = 14;
         assertEquals(expected, actual);
     }
 
